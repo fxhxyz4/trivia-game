@@ -1,0 +1,5 @@
+#lang racket/base
+
+(require compiler/cm)
+(set-compiler-pref! 'optimize-level 3)
+(set-compiler-pref! 'warnings-as-errors #t)
