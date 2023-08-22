@@ -1,9 +1,12 @@
 #lang racket
 
 #|
-  trvia game with json package
+  Author: fxhxyz
+  Email: fxhxyz@proton.mail
+  Website: fxhxyz.vercel.app
 |#
 
+; Import modules
 (require racket/system)
 (require json)
 
@@ -12,7 +15,7 @@
 (define (dsp x)
   (cond
     [(string? x) (display x)]
-    [else "Argument not a string"]))
+    [else "Error"]))
 
 (dsp " \n")
 (dsp "  _        _       _       \n")
@@ -24,52 +27,34 @@
 (dsp " \n")
 (dsp " \n")
 
-; Lol
+; Read questions and answers from JSON file
 (define (read-questions-and-answers file-path)
   (define json-data (call-with-input-file file-path read-json))
   (define questions-and-answers (hash-ref json-data 'questions))
   (define questions (map (λ (qa) (hash-ref qa 'question)) questions-and-answers))
   (define answers (map (λ (qa) (hash-ref qa 'answer)) questions-and-answers))
-  (values (map string-trim questions) (map string-trim answers)))
+  (values questions answers))
 
-
-;(define question "Qwerty")
-;(define qanswer "123")
-
-; Output question.
-; Input answer.
-(define (answer q)
-  (dsp (format "~a ?" q))
-  (dsp "\n")
-  (dsp "Your answer: ")
-  (flush-output)
-  (let ([ans (string-trim (symbol->string (read)))])
-    (condition q ans)))
-
-; Condition
-(define (condition q ans)
-  (cond
-    [(string-ci=? (string-trim q) (string-trim ans)) (dsp "\n\nCorrect answer\n")]
-    [else (dsp "Incorrect answer\n\n\n\n")]))
-
-; The imitation of a do...while loop
-(define (while-loop question)
-  (let loop ((ans '()))
-    (let ([user-ans (answer question)])
-      (if (string? user-ans)
+; Output question and process answer
+(define (process-question-and-answer question answer)
+  (let loop ()
+    (dsp question)
+    (dsp "\nYour answer: ")
+    (flush-output)
+    (let ([user-answer (string-trim (read-line))])
+      (if (string-ci=? user-answer answer)
           (begin
-            (set! ans user-ans)
-            (condition question ans)
-            (if (not (string-ci=? (string-trim question) (string-trim ans)))
-                (loop ans)
-                (dsp "Exiting loop\n")))
-          (loop ans)))))
+            (dsp "\nCorrect answer\n\n\n"))
+          (begin
+            (dsp "\nIncorrect answer\n\n\n")
+            (loop))))))
 
-; Kek
+; Loop through all questions and process answers
 (define (main)
-  (let-values ([(questions answers) (read-questions-and-answers "questions.json")])
+  (let-values ([(questions answers) (read-questions-and-answers "data.json")])
     (for ([i (in-range (length questions))])
-      (let ([question (list-ref questions i)])
-        (while-loop question)))))
+      (let ([question (list-ref questions i)]
+            [answer (list-ref answers i)])
+        (process-question-and-answer question answer)))))
 
 (main)
