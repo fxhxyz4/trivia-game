@@ -38,17 +38,20 @@
   (values questions answers))
 
 ; Output question and process answer.
+; Using tail recursion.
 (define (process-q question answer)
-  (dsp question)
-  (dsp "\nYour answer: ")
-  (flush-output)
-  (let ([user-answer (string-trim (read-line))])
-    (if (string-ci=? user-answer answer)
-        (begin
-          (dsp "\nCorrect answer\n\n\n"))
-        (begin
-          (dsp "\nIncorrect answer\n\n\n")
-          (process-q question answer)))))
+  (define (process-q-tail question answer)
+    (dsp question)
+    (dsp "\nYour answer: ")
+    (flush-output)
+    (let ((user-answer (string-trim (read-line))))
+      (if (string-ci=? user-answer answer)
+          (begin
+            (dsp "\nCorrect answer\n\n\n"))
+          (begin
+            (dsp "\nIncorrect answer\n\n\n")
+            (process-q question answer)))))
+    (process-q-tail question answer))
 
 ; Applies the process-q function to each question-answer pair.
 (define (process-que questions answers)
