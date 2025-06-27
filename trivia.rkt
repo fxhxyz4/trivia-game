@@ -2,7 +2,7 @@
 
 #|
   Author: fxhxyz
-  Email: fxhxyz@proton.mail
+  Email: fxhsec@proton.me
   Website: fxhxyz.vercel.app
 |#
 
