@@ -6,3 +6,9 @@
   \__|_|  |_| \_/ |_|\__,_|  \__, |\__,_|_| |_| |_|\___|
                               __/ |                     
                              |___/                      
+
+install DrRacket
+git clone https://github.com/fxhxyz4/trivia-game.git
+
+cd trivia-game
+racket trivia.rkt
