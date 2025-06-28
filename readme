@@ -7,7 +7,7 @@
                               __/ |                     
                              |___/                      
 
-install DrRacket
+sudo snap install racket
 git clone https://github.com/fxhxyz4/trivia-game.git
 
 cd trivia-game
