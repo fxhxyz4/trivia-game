@@ -76,7 +76,7 @@
 ; Main entry point
 (define (main)
   (logo)
-  (let-values ([(questions answers) (read-q "/home/fxhxyz/Desktop/dev/trivia-game/data.json")])
+  (let-values ([(questions answers) (read-q "./data.json")])
     (let-values ([(total-correct total-incorrect) (process-que questions answers)])
       (dsp (format "Game finished!\nTotal correct answers: ~a\nTotal incorrect attempts: ~a\n"
                    total-correct total-incorrect)))))
