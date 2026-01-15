@@ -11,4 +11,6 @@ sudo snap install racket
 git clone https://github.com/fxhxyz4/trivia-game.git
 
 cd trivia-game
+export PATH=$PATH:/var/lib/snapd/snap/bin
+
 racket trivia.rkt
