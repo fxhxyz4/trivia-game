@@ -198,7 +198,7 @@
     { "question": "What is the most expensive spice by weight?", "answer": "Saffron" },
     { "question": "Which country is the Taj Mahal located in?", "answer": "India" },
     { "question": "What is the capital of Malaysia?", "answer": "Kuala Lumpur" },
-	{ "question": "How many centimeters are in a meter?", "answer": "100" },
-	{ "question": "What was America's first national park?", "answer": "Yellowstone National Park" }
+    { "question": "How many centimeters are in a meter?", "answer": "100" },
+    { "question": "What was America's first national park?", "answer": "Yellowstone National Park" }
   ]
 }
