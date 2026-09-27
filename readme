@@ -14,3 +14,6 @@ cd trivia-game
 export PATH=$PATH:/var/lib/snapd/snap/bin
 
 racket trivia.rkt
+
+
+⚠️ NEWS: added new questions!
